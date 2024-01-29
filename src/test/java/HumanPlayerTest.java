@@ -1,24 +1,29 @@
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 public class HumanPlayerTest {
 
     @Test
     void testMakeGuessWithValidInput() {
-        // Arrange
+
         String playerName = "TestPlayer";
 
-        // Crear un Spy para ScannerWrapper y configurarlo para simular la entrada del usuario
-        ScannerWrapper spyScannerWrapper = Mockito.spy(new ScannerWrapper());
-        when(spyScannerWrapper.nextInt()).thenReturn(42);
+        // Crea un Spy para ScannerWrapper y configurarlo para simular la entrada del usuario
+        // ScannerWrapper spyScannerWrapper = Mockito.spy(new ScannerWrapper());
+        ScannerWrapper spyScannerWrapper = Mockito.mock(ScannerWrapper.class);
+        when(spyScannerWrapper.nextInt()).thenReturn(42); // Entrada válida
+       // doThrow(new InputMismatchException()).when(spyScannerWrapper).nextLine(); // Simular entrada no válida
 
-        // Crear el objeto HumanPlayer usando el constructor modificado
+        // Crea el objeto HumanPlayer usando el constructor modificado
         HumanPlayer humanPlayer = new HumanPlayer(playerName, spyScannerWrapper);
 
-        // Act
         int guess = humanPlayer.makeGuess();
 
         // Assert
