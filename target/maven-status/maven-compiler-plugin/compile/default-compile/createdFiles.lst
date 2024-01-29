@@ -1,0 +1,5 @@
+org\example\GuessTheNumberGame.class
+org\example\ComputerPlayer.class
+org\example\HumanPlayer.class
+org\example\Main.class
+org\example\Player.class
