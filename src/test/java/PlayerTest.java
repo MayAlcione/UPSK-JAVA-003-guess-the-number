@@ -16,7 +16,7 @@ public class PlayerTest {
         assertEquals(playerName, player.getName());
     }
 
-    // Test para verificar que el método makeGuess de Player genera una conjetura no negativa.
+    // Test para verificar que el método makeGuess de Player genera una conjetura que no es negativa.
     @Test
     void testMakeGuess() {
 
@@ -24,7 +24,7 @@ public class PlayerTest {
 
         int guess = player.makeGuess();
 
-        assertTrue(guess >= 0); // Simple comprobación para asegurar que la conjetura es no negativa
+        assertTrue(guess >= 0);
     }
 
     // Test para verificar que el método getGuesses de Player devuelve la lista de conjeturas esperada
